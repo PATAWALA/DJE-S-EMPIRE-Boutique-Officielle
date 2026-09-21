@@ -101,54 +101,54 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
           </p>
         </div>
 
-        {/* Bloc boutons — GRAND et en Or */}
-        <div className="mt-4 flex flex-col items-stretch gap-2 sm:flex-row sm:items-stretch">
-          {/* Sélecteur quantité */}
-          <div className="flex h-12 w-full items-center justify-between rounded-full border border-line bg-soft sm:h-12 sm:w-auto">
+        {/* ✅ Bloc boutons corrigé : w-full partout sur mobile */}
+        <div className="mt-4 flex w-full flex-col gap-2.5 sm:flex-row sm:items-stretch">
+          {/* Sélecteur quantité — pleine largeur mobile */}
+          <div className="flex h-14 w-full items-center justify-between rounded-full border-2 border-line bg-soft px-1 sm:h-14 sm:w-auto sm:min-w-[140px]">
             <button
               type="button"
               onClick={handleDecrement}
               disabled={quantity <= minQty}
               aria-label="Diminuer la quantité"
-              className="flex h-full w-12 items-center justify-center text-ink transition-opacity disabled:opacity-30"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-ink transition-all hover:bg-white disabled:opacity-30 active:scale-95"
             >
-              <Minus className="h-4 w-4" strokeWidth={2.6} />
+              <Minus className="h-5 w-5" strokeWidth={2.6} />
             </button>
-            <span className="min-w-[34px] text-center text-[15px] font-bold tabular-nums text-ink">
+            <span className="min-w-[40px] text-center text-[17px] font-extrabold tabular-nums text-ink">
               {quantity}
             </span>
             <button
               type="button"
               onClick={handleIncrement}
               aria-label="Augmenter la quantité"
-              className="flex h-full w-12 items-center justify-center text-ink transition-opacity hover:text-gold-700"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-ink transition-all hover:bg-white hover:text-gold-700 active:scale-95"
             >
-              <Plus className="h-4 w-4" strokeWidth={2.6} />
+              <Plus className="h-5 w-5" strokeWidth={2.6} />
             </button>
           </div>
 
-          {/* Bouton Ajouter — Or dégradé */}
+          {/* ✅ Bouton Ajouter — w-full mobile, flex-1 desktop, plus grand */}
           <button
             type="button"
             onClick={handleAdd}
             disabled={!product.inStock}
-            className={`flex h-12 flex-1 items-center justify-center gap-2 rounded-full text-[14px] font-bold tracking-wide transition-all ${
+            className={`flex h-14 w-full items-center justify-center gap-2.5 rounded-full text-[15px] font-bold tracking-wide transition-all sm:flex-1 ${
               !product.inStock
                 ? "cursor-not-allowed bg-zinc-100 text-zinc-400"
                 : justAdded
-                ? "bg-emerald-500 text-white"
-                : "bg-gold-gradient text-ink shadow-[0_6px_20px_-8px_rgba(201,162,39,0.7)] hover:shadow-[0_10px_28px_-8px_rgba(201,162,39,0.9)] hover:brightness-105 active:scale-[0.98]"
+                ? "bg-emerald-500 text-white shadow-[0_8px_24px_-10px_rgba(16,185,129,0.9)]"
+                : "bg-gold-gradient text-ink shadow-[0_8px_24px_-10px_rgba(201,162,39,0.85)] hover:shadow-[0_12px_32px_-10px_rgba(201,162,39,1)] hover:brightness-105 active:scale-[0.98]"
             }`}
           >
             {justAdded ? (
               <>
-                <Check className="h-4 w-4" strokeWidth={2.8} />
-                Ajouté
+                <Check className="h-5 w-5" strokeWidth={2.8} />
+                Ajouté au panier
               </>
             ) : (
               <>
-                <ShoppingBag className="h-4 w-4" strokeWidth={2.4} />
-                Ajouter
+                <ShoppingBag className="h-5 w-5" strokeWidth={2.4} />
+                Ajouter au panier
               </>
             )}
           </button>
