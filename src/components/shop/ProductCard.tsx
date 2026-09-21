@@ -143,12 +143,12 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
             {justAdded ? (
               <>
                 <Check className="h-5 w-5" strokeWidth={2.8} />
-                Ajouté au panier
+                Ajouter
               </>
             ) : (
               <>
                 <ShoppingBag className="h-5 w-5" strokeWidth={2.4} />
-                Ajouter au panier
+                Ajouter
               </>
             )}
           </button>
