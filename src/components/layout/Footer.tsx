@@ -10,19 +10,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5">
-              <span
-                className="flex h-11 w-11 items-center justify-center rounded-full p-[1.5px] shadow-sm"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(135deg,#bf953f 0%,#fcf6ba 35%,#b38728 65%,#aa771c 100%)",
-                }}
-              >
-                <span className="flex h-full w-full items-center justify-center rounded-full bg-ink">
-                  <span className="text-gold-gradient text-[13px] font-bold tracking-tight">
-                    DE
-                  </span>
-                </span>
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo.jpeg"
+                alt="DJE'S EMPIRE"
+                className="h-12 w-12 rounded-full object-cover ring-2 ring-gold-500/40 sm:h-14 sm:w-14"
+              />
               <div className="flex flex-col leading-none">
                 <span className="text-gold-gradient text-base font-extrabold tracking-[0.20em]">
                   DJE&apos;S
