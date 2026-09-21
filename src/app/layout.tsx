@@ -21,10 +21,15 @@ export const metadata: Metadata = {
     "cosmétiques",
     "Ouagadougou",
   ],
+  icons: {
+    icon: "/logo.jpeg",
+    apple: "/logo.jpeg",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#09090B",
+  themeColor: "#FFFFFF",        // ← barre du navigateur BLANCHE
+  colorScheme: "light",          // ← force le mode clair
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -34,7 +39,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={inter.variable}>
+    <html lang="fr" className={inter.variable} style={{ colorScheme: "light" }}>
       <body className="font-sans bg-white text-ink antialiased">
         {children}
       </body>
