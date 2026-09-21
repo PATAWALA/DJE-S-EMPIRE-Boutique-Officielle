@@ -40,8 +40,8 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:border-zinc-300 hover:shadow-[0_12px_40px_-16px_rgba(9,9,11,0.18)]">
-      {/* Image */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-soft">
+      {/* Image — plus large que haute sur mobile */}
+      <div className="relative aspect-[16/11] w-full overflow-hidden bg-soft sm:aspect-[4/5]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.image}
@@ -81,14 +81,14 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
       </div>
 
       {/* Body */}
-      <div className="flex flex-1 flex-col p-3.5 sm:p-4">
-        <h3 className="line-clamp-2 text-[14px] font-semibold leading-snug text-ink sm:text-[15px]">
+      <div className="flex flex-1 flex-col p-4 sm:p-4">
+        <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug text-ink sm:text-[15px]">
           {product.name}
         </h3>
 
-        {/* Price */}
+        {/* Prix */}
         <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-[17px] font-bold tracking-tight text-ink sm:text-lg">
+          <span className="text-lg font-bold tracking-tight text-ink sm:text-lg">
             {formatXOF(currentPrice)}
           </span>
           {isGros && (
@@ -104,28 +104,28 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
           </p>
         )}
 
-        {/* Quantity + Add */}
-        <div className="mt-4 flex items-center gap-2">
-          <div className="flex h-10 items-center rounded-full border border-line bg-soft">
+        {/* Quantité + Ajouter — empilés sur mobile */}
+        <div className="mt-4 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+          <div className="flex h-11 items-center justify-between rounded-full border border-line bg-soft sm:h-10 sm:w-auto sm:justify-start">
             <button
               type="button"
               onClick={handleDecrement}
               disabled={quantity <= minQty}
               aria-label="Diminuer la quantité"
-              className="flex h-full w-9 items-center justify-center text-ink transition-opacity disabled:opacity-30"
+              className="flex h-full w-12 items-center justify-center text-ink transition-opacity disabled:opacity-30 sm:w-9"
             >
-              <Minus className="h-3.5 w-3.5" strokeWidth={2.4} />
+              <Minus className="h-4 w-4 sm:h-3.5 sm:w-3.5" strokeWidth={2.4} />
             </button>
-            <span className="min-w-[26px] text-center text-[13px] font-semibold tabular-nums text-ink">
+            <span className="min-w-[32px] text-center text-[14px] font-semibold tabular-nums text-ink sm:min-w-[26px] sm:text-[13px]">
               {quantity}
             </span>
             <button
               type="button"
               onClick={handleIncrement}
               aria-label="Augmenter la quantité"
-              className="flex h-full w-9 items-center justify-center text-ink transition-opacity hover:opacity-70"
+              className="flex h-full w-12 items-center justify-center text-ink transition-opacity hover:opacity-70 sm:w-9"
             >
-              <Plus className="h-3.5 w-3.5" strokeWidth={2.4} />
+              <Plus className="h-4 w-4 sm:h-3.5 sm:w-3.5" strokeWidth={2.4} />
             </button>
           </div>
 
@@ -133,7 +133,7 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
             type="button"
             onClick={handleAdd}
             disabled={!product.inStock}
-            className={`flex h-10 flex-1 items-center justify-center gap-2 rounded-full text-[12px] font-semibold transition-all sm:text-[13px] ${
+            className={`flex h-11 flex-1 items-center justify-center gap-2 rounded-full text-[13.5px] font-semibold transition-all sm:h-10 sm:text-[13px] ${
               !product.inStock
                 ? "cursor-not-allowed bg-zinc-100 text-zinc-400"
                 : justAdded
@@ -149,7 +149,7 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
             ) : (
               <>
                 <ShoppingBag className="h-4 w-4" strokeWidth={2.2} />
-                Ajouter
+                Ajouter au panier
               </>
             )}
           </button>

@@ -35,7 +35,7 @@ export default function HomePage() {
     <div className="flex min-h-screen flex-col bg-white">
       <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
-      {/* Hero */}
+      {/* HERO */}
       <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-soft to-white">
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
           <div className="flex flex-col items-start">
@@ -55,7 +55,7 @@ export default function HomePage() {
               validez votre commande directement sur WhatsApp.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex w-full flex-wrap items-center gap-3 sm:w-auto">
               <button
                 type="button"
                 onClick={() =>
@@ -63,7 +63,7 @@ export default function HomePage() {
                     .getElementById("catalogue")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="flex h-11 items-center gap-2 rounded-full bg-ink px-5 text-[13.5px] font-semibold text-white transition-all hover:bg-rose-deep active:scale-[0.98]"
+                className="flex h-11 flex-1 items-center justify-center gap-2 rounded-full bg-ink px-5 text-[13.5px] font-semibold text-white transition-all hover:bg-rose-deep active:scale-[0.98] sm:flex-none"
               >
                 Voir le catalogue
                 <ChevronRight className="h-4 w-4" strokeWidth={2.4} />
@@ -72,7 +72,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={openCart}
-                className="flex h-11 items-center gap-2 rounded-full border border-line bg-white px-5 text-[13.5px] font-semibold text-ink transition-all hover:border-ink"
+                className="flex h-11 flex-1 items-center justify-center gap-2 rounded-full border border-line bg-white px-5 text-[13.5px] font-semibold text-ink transition-all hover:border-ink sm:flex-none"
               >
                 Mon panier
               </button>
@@ -92,7 +92,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Filters */}
+      {/* FILTRES */}
       <CategoryFilter
         selected={category}
         onSelect={setCategory}
@@ -100,7 +100,7 @@ export default function HomePage() {
         onSaleModeChange={setSaleMode}
       />
 
-      {/* Catalogue */}
+      {/* CATALOGUE */}
       <main
         id="catalogue"
         className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 sm:py-10 lg:px-8"
@@ -129,7 +129,8 @@ export default function HomePage() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
+          /* 🔽 CORRECTION : 1 colonne sur mobile */
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
             {filteredProducts.map((product) => (
               <ProductCard
                 key={product.id}
