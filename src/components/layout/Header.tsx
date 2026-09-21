@@ -19,28 +19,22 @@ export default function Header({
   return (
     <header className="sticky top-0 z-40 w-full border-b border-line bg-white/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:h-20 sm:gap-6 sm:px-6 lg:px-8">
-        {/* Logo avec anneau Or + texte Or dégradé */}
+        {/* Logo image */}
         <button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-80"
+          className="flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-85"
           aria-label="DJE'S EMPIRE — Accueil"
         >
-          {/* Monogramme avec bordure Or */}
-          <span
-            className="flex h-10 w-10 items-center justify-center rounded-full p-[1.5px] shadow-sm sm:h-11 sm:w-11"
-            style={{
-              backgroundImage:
-                "linear-gradient(135deg,#bf953f 0%,#fcf6ba 35%,#b38728 65%,#aa771c 100%)",
-            }}
-          >
-            <span className="flex h-full w-full items-center justify-center rounded-full bg-ink text-[12px] font-bold tracking-tight text-gold-gradient sm:text-[13px]">
-              <span className="text-gold-gradient">DE</span>
-            </span>
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.jpeg"
+            alt="DJE'S EMPIRE"
+            className="h-10 w-10 rounded-full object-cover ring-2 ring-gold-500/40 sm:h-11 sm:w-11"
+          />
 
-          {/* Nom avec dégradé Or */}
-          <span className="flex flex-col items-start leading-none">
+          {/* Nom avec dégradé Or (facultatif — supprime si présent dans le logo) */}
+          <span className="hidden flex-col items-start leading-none xs:flex sm:flex">
             <span className="text-gold-gradient text-[15px] font-extrabold tracking-[0.20em] sm:text-base">
               DJE&apos;S
             </span>
