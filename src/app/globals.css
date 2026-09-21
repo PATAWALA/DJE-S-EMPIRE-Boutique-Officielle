@@ -8,6 +8,14 @@
   --color-soft: #f8fafc;
   --color-line: #e4e4e7;
 
+  /* Palette Or / Gold */
+  --color-gold-50: #fdf9ec;
+  --color-gold-100: #faf0c8;
+  --color-gold-300: #e6c56a;
+  --color-gold-500: #c9a227;
+  --color-gold-700: #8b6f14;
+  --color-gold-900: #4a3a08;
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -19,6 +27,33 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* Dégradé Or réutilisable pour textes */
+@utility text-gold-gradient {
+  background-image: linear-gradient(
+    135deg,
+    #bf953f 0%,
+    #fcf6ba 30%,
+    #b38728 55%,
+    #fbf5b7 75%,
+    #aa771c 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dégradé Or pour fonds (badges, boutons) */
+@utility bg-gold-gradient {
+  background-image: linear-gradient(
+    135deg,
+    #bf953f 0%,
+    #fcf6ba 35%,
+    #b38728 65%,
+    #aa771c 100%
+  );
 }
 
 html,
@@ -33,6 +68,6 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-rose-nude);
+  background-color: #c9a227;
   color: #ffffff;
 }

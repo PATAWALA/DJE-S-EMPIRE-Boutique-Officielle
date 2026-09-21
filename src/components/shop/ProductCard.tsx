@@ -18,7 +18,6 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
   const minQty = isGros ? product.minGrosQuantity : 1;
   const [quantity, setQuantity] = useState<number>(minQty);
 
-  // Sync min when switching mode
   const [lastMode, setLastMode] = useState<SaleMode>(saleMode);
   if (lastMode !== saleMode) {
     setLastMode(saleMode);
@@ -39,9 +38,9 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
   };
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:border-zinc-300 hover:shadow-[0_12px_40px_-16px_rgba(9,9,11,0.18)]">
-      {/* Image — plus large que haute sur mobile */}
-      <div className="relative aspect-[16/11] w-full overflow-hidden bg-soft sm:aspect-[4/5]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:border-gold-300 hover:shadow-[0_12px_40px_-16px_rgba(9,9,11,0.18)]">
+      {/* Image */}
+      <div className="relative aspect-[16/11] w-full shrink-0 overflow-hidden bg-soft sm:aspect-[4/5]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.image}
@@ -50,7 +49,6 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
-        {/* Badges */}
         <div className="absolute left-3 top-3 flex flex-col items-start gap-1.5">
           {product.inStock ? (
             <span className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-600 backdrop-blur">
@@ -62,13 +60,12 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
             </span>
           )}
           {isGros && (
-            <span className="rounded-full bg-rose-deep px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+            <span className="bg-gold-gradient rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-ink shadow-sm">
               Prix Gros
             </span>
           )}
         </div>
 
-        {/* Rating */}
         <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 backdrop-blur">
           <Star
             className="h-3 w-3 fill-amber-400 text-amber-400"
@@ -80,33 +77,42 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
         </div>
       </div>
 
-      {/* Body */}
-      <div className="flex flex-1 flex-col p-4 sm:p-4">
-        <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug text-ink sm:text-[15px]">
-          {product.name}
-        </h3>
+      {/* Body — structure flex pour alignement parfait bas de carte */}
+      <div className="flex flex-1 flex-col p-4">
+        {/* Bloc HAUT : nom + prix (hauteur variable) */}
+        <div className="flex-1">
+          <h3 className="line-clamp-2 min-h-[42px] text-[15px] font-semibold leading-snug text-ink">
+            {product.name}
+          </h3>
 
-        {/* Prix */}
-        <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-lg font-bold tracking-tight text-ink sm:text-lg">
-            {formatXOF(currentPrice)}
-          </span>
-          {isGros && (
-            <span className="text-[12px] font-medium text-zinc-400 line-through">
-              {formatXOF(product.priceDetail)}
+          <div className="mt-2 flex items-baseline gap-2">
+            <span className="text-lg font-bold tracking-tight text-ink">
+              {formatXOF(currentPrice)}
             </span>
-          )}
+            {isGros && (
+              <span className="text-[12px] font-medium text-zinc-400 line-through">
+                {formatXOF(product.priceDetail)}
+              </span>
+            )}
+          </div>
+
+          {/* Réserve toujours la même hauteur pour l'info "Minimum" */}
+          <p
+            className={`mt-1 text-[11px] font-medium ${
+              isGros ? "text-gold-700" : "text-transparent select-none"
+            }`}
+            aria-hidden={!isGros}
+          >
+            {isGros
+              ? `Minimum ${product.minGrosQuantity} pièces`
+              : "Espace réservé"}
+          </p>
         </div>
 
-        {isGros && (
-          <p className="mt-1 text-[11px] font-medium text-rose-deep">
-            Minimum {product.minGrosQuantity} pièces
-          </p>
-        )}
-
-        {/* Quantité + Ajouter — empilés sur mobile */}
+        {/* Bloc BAS : quantité + bouton (toujours collé en bas) */}
         <div className="mt-4 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-          <div className="flex h-11 items-center justify-between rounded-full border border-line bg-soft sm:h-10 sm:w-auto sm:justify-start">
+          {/* Sélecteur quantité */}
+          <div className="flex h-11 w-full items-center justify-between rounded-full border border-line bg-soft sm:h-10 sm:w-auto">
             <button
               type="button"
               onClick={handleDecrement}
@@ -129,6 +135,7 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
             </button>
           </div>
 
+          {/* Bouton Ajouter */}
           <button
             type="button"
             onClick={handleAdd}
@@ -138,7 +145,7 @@ export default function ProductCard({ product, saleMode }: ProductCardProps) {
                 ? "cursor-not-allowed bg-zinc-100 text-zinc-400"
                 : justAdded
                 ? "bg-emerald-500 text-white"
-                : "bg-ink text-white hover:bg-rose-deep active:scale-[0.98]"
+                : "bg-ink text-white hover:bg-gold-700 active:scale-[0.98]"
             }`}
           >
             {justAdded ? (

@@ -9,15 +9,25 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-[13px] font-bold tracking-tight text-white">
-                DE
+            <div className="flex items-center gap-2.5">
+              <span
+                className="flex h-11 w-11 items-center justify-center rounded-full p-[1.5px] shadow-sm"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg,#bf953f 0%,#fcf6ba 35%,#b38728 65%,#aa771c 100%)",
+                }}
+              >
+                <span className="flex h-full w-full items-center justify-center rounded-full bg-ink">
+                  <span className="text-gold-gradient text-[13px] font-bold tracking-tight">
+                    DE
+                  </span>
+                </span>
               </span>
               <div className="flex flex-col leading-none">
-                <span className="text-base font-extrabold tracking-[0.18em] text-ink">
+                <span className="text-gold-gradient text-base font-extrabold tracking-[0.20em]">
                   DJE&apos;S
                 </span>
-                <span className="text-[10px] font-medium tracking-[0.42em] text-rose-deep">
+                <span className="text-gold-gradient text-[10px] font-semibold tracking-[0.42em]">
                   EMPIRE
                 </span>
               </div>
@@ -40,7 +50,7 @@ export default function Footer() {
                   href="https://wa.me/22666937272"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-[13.5px] font-medium text-zinc-700 transition-colors hover:text-rose-deep"
+                  className="flex items-center gap-2.5 text-[13.5px] font-medium text-zinc-700 transition-colors hover:text-gold-700"
                 >
                   <PhoneCall className="h-4 w-4 shrink-0" strokeWidth={2.2} />
                   +226 66937272
@@ -51,7 +61,7 @@ export default function Footer() {
                   href="https://wa.me/22660057171"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-[13.5px] font-medium text-zinc-700 transition-colors hover:text-rose-deep"
+                  className="flex items-center gap-2.5 text-[13.5px] font-medium text-zinc-700 transition-colors hover:text-gold-700"
                 >
                   <PhoneCall className="h-4 w-4 shrink-0" strokeWidth={2.2} />
                   +226 60057171
